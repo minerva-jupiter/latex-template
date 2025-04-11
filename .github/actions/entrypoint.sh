@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 set -eux
-# build pdf
-latexmk -pdfdvi main.tex
+# build pdf (change if necessary)
+latexmk -pdfdvi sample.tex
