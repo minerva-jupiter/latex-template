@@ -1,0 +1,33 @@
+{
+    // 使用パッケージのコマンドや環境の補完を有効にする
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
+    
+    // 生成ファイルを "out" ディレクトリに吐き出すなら
+    "latex-workshop.latex.outDir": "out",
+
+     // ビルドのレシピ
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+    ],
+    // ビルドのツール
+    "latex-workshop.latex.tools": [      
+        {
+            "name" : "latexmk",
+            "command" : "wsl.exe",
+            "args" : [
+                "latexmk",
+                // "-time"で実行時間を表示してくれる。
+                "-time",
+                "-outdir=%OUTDIR%",
+                "%DOCFILE%.tex" 
+            ]
+        },
+    ]
+}
