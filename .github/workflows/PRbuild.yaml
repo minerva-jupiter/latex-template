@@ -1,7 +1,6 @@
 name: compile LaTeX when PR update
 
 on:
-  push:
   pull_request:
     types: [opened, edited]
 
