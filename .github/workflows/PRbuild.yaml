@@ -5,9 +5,9 @@ on:
   pull_request:
     types: [opened, edited]
 
-jops:
+jobs:
   PRbuild:
-    name: Build
+    name: PRBuild
     runs-on: self-hosted
     steps:
       - name: Set up Git repository
