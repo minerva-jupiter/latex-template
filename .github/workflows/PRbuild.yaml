@@ -1,0 +1,23 @@
+name: compile LaTeX when PR update
+
+on:
+  push:
+  pull_request:
+    types: [opened, edited]
+
+jops:
+  build:
+    name: Build
+    runs-on: self-hosted
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: compile latex document
+        uses: ./.github/actions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: comment pdf to PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr comment -F ./main.pdf "${URL}"
