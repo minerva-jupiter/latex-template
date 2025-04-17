@@ -9,6 +9,11 @@ jobs:
     name: PRBuild
     runs-on: self-hosted
     steps:
+      - name: setup git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "<>"
+          git pull origin dev
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: compile latex document
@@ -20,10 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.html_url }}
         run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-          git pull origin dev
-          git add main.pdf
+          git add ./main.pdf
           git commit -m "Add PDF to PR"
           git push origin HEAD:dev
 
