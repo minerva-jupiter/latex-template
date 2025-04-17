@@ -21,7 +21,7 @@ jobs:
           URL: ${{ github.event.pull_request.html_url }}
         run: |
           git fetch origin dev
-          git pull
+          git pull origin dev
           git add ./main.pdf
           git commit -m "Add PDF to PR"
           git push origin HEAD:dev
