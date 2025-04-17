@@ -20,7 +20,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           URL: ${{ github.event.pull_request.html_url }}
         run: |
-          git pull
+          git fetch origin dev
           git add ./main.pdf
           git commit -m "Add PDF to PR"
           git push origin HEAD:dev
