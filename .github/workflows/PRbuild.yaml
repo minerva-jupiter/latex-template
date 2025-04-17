@@ -9,11 +9,6 @@ jobs:
     name: PRBuild
     runs-on: self-hosted
     steps:
-      - name: setup git
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-          git pull origin dev
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: compile latex document
