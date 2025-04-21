@@ -30,6 +30,10 @@ jobs:
           git checkout $BRANCH
           cp ../main.pdf ./converted/
           git add -A
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+            exit 0
+          fi
           git commit -m "add pdf to PR"
           git remote set-url origin https://<username>:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push
