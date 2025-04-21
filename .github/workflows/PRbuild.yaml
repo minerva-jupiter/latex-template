@@ -22,7 +22,7 @@ jobs:
           BRANCH: ${{ github.event.pull_request.head.ref }}
           URL: ${{ github.event.pull_request.html_url }}
         run: |
-          git config --global user.name "github-actions"
+          git config --global user.name "minerva-jupiter"
           git config --global user.email "latex-template@minervajuppiter.net"
           gh repo clone $GIT_URL
           cd ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
