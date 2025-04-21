@@ -19,13 +19,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GIT_URL: ${{ github.event.pull_request.head.repo.clone_url }}
-          REPO_NAME: ${{ github.repository.name }}
+          REPO_NAME: ${{ github.repository }}
           BRANCH: ${{ github.event.pull_request.head.ref }}
           URL: ${{ github.event.pull_request.html_url }}
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "example@example.com"
-          git clone $GIT_URL
+          gh repo clone $GIT_URL
           cd $REPO_NAME
           git checkout $BRANCH
           cp ../main.pdf ./converted/
