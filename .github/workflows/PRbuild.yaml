@@ -26,6 +26,7 @@ jobs:
           git config --local user.email "example@example.com"
           gh repo clone $GIT_URL
           cd ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
+          git fetch origin $BRANCH
           git checkout $BRANCH
           cp ../main.pdf ./converted/
           git add .
