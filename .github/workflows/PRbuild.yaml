@@ -22,8 +22,8 @@ jobs:
           BRANCH: ${{ github.event.pull_request.head.ref }}
           URL: ${{ github.event.pull_request.html_url }}
         run: |
-          git config --global user.name "Minerva_Juppiter"
-          git config --global user.email "ryouturn@gmail.com"
+          git config --global user.name $GHA_EMAIL
+          git config --global user.email $GHA_NAME
           gh repo clone $GIT_URL
           cd ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
           git fetch origin $BRANCH
