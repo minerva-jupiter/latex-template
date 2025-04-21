@@ -17,7 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: comment pdf to PR
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           GIT_URL: ${{ github.event.pull_request.head.repo.clone_url }}
           BRANCH: ${{ github.event.pull_request.head.ref }}
           URL: ${{ github.event.pull_request.html_url }}
