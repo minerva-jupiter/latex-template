@@ -29,7 +29,7 @@ jobs:
           git fetch origin $BRANCH
           git checkout $BRANCH
           cp ../main.pdf ./converted/
-          git add .
+          git add -A
           git commit -m "add pdf to PR"
           git remote set-url origin https://<username>:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push
