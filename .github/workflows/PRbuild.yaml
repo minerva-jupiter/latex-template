@@ -31,4 +31,5 @@ jobs:
           cp ../main.pdf ./converted/
           git add .
           git commit -m "add pdf to PR"
+          git remote set-url origin https://<username>:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push
