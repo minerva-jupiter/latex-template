@@ -24,7 +24,7 @@ jobs:
         run: |
           git config --global user.name "Minerva_Juppiter"
           git config --global user.email "ryouturn@gmail.com"
-          git remote add origin https://minerva-jupiter:${GITHUB_TOKEN}@${GIT_URL#https://}
+          git remote set-url origin https://minerva-jupiter:${GITHUB_TOKEN}@${GIT_URL#https://}
           gh repo clone $GIT_URL
           cd ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
           git fetch origin $BRANCH
