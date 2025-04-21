@@ -31,4 +31,4 @@ jobs:
           cp ../main.pdf ./converted/
           git add .
           git commit -m "add pdf to PR"
-          git push origin $BRANCH
+          git push -u origin $BRANCH
