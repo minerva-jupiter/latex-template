@@ -16,12 +16,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload PDF artifact
+        id: artifact-upload-step
         uses: actions/upload-artifact@v4
         with:
           name: main
           path: ./main.pdf
       - name: Add comment to PR
         run: |
-          gh pr comment ${{ github.event.number }} -b "PDF artifact is ready!" 
+          gh pr comment ${{ github.event.number }} -b "${{ steps.artifact-upload-step.outputs.artifact-url }}" 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
