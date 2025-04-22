@@ -34,6 +34,6 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-        
+          git commit -m "render main.tex"
           git remote set-url origin https://<username>:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push
