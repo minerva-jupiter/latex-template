@@ -15,15 +15,8 @@ jobs:
         uses: ./.github/actions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: comment pdf to PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GIT_URL: ${{ github.event.pull_request.head.repo.clone_url }}
-          BRANCH: ${{ github.event.pull_request.head.ref }}
-          URL: ${{ github.event.pull_request.html_url }}
-        run: |
-          ls
-          git add ./main.pdf
-          git commit -m "render main.tex"
-          git remote set-url origin https://<username>:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git push
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.TEX_FILE }}
+          path: ${{ env.TEX_FILE }}.pdf
