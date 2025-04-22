@@ -1,0 +1,31 @@
+name: compile LaTeX when PR update
+
+on:
+  push:
+    branches-ignore:
+      - NotBuild
+
+
+jobs:
+  PRbuild:
+    name: PushBuild
+    runs-on: self-hosted
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: compile latex document
+        uses: ./.github/actions
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload PDF artifact
+        id: artifact-upload-step
+        uses: actions/upload-artifact@v4
+        with:
+          name: main
+          path: ./main.pdf
+          retention-days: 7
+      - name: Add comment to PR
+        run: |
+          gh pr comment ${{ github.event.number }} -b "${{ steps.artifact-upload-step.outputs.artifact-url }}" 
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
