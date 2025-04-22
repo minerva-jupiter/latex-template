@@ -23,7 +23,6 @@ jobs:
           URL: ${{ github.event.pull_request.html_url }}
         run: |
           ls
-          git checkout $BRANCH
           git add ./main.pdf
           git commit -m "render main.tex"
           git remote set-url origin https://<username>:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
