@@ -21,6 +21,7 @@ jobs:
         with:
           name: main
           path: ./main.pdf
+          compression-level: 0
       - name: Add comment to PR
         run: |
           gh pr comment ${{ github.event.number }} -b "${{ steps.artifact-upload-step.outputs.artifact-url }}" 
