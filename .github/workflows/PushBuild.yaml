@@ -24,8 +24,3 @@ jobs:
           name: main
           path: ./main.pdf
           retention-days: 7
-      - name: Add comment to PR
-        run: |
-          gh pr comment ${{ github.event.number }} -b "${{ steps.artifact-upload-step.outputs.artifact-url }}" 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
