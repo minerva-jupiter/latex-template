@@ -19,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.TEX_FILE }}
-          path: ${{ env.TEX_FILE }}.pdf
+          path: ./main.pdf
