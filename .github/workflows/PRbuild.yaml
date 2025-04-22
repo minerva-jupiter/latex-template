@@ -21,9 +21,7 @@ jobs:
           name: main
           path: ./main.pdf
       - name: Add comment to PR
-        uses: unsplash/comment-on-pr@v1
-        with:
+        run: |
+          gh pr comment ${{ github.event.number }} --body-file comment.md
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          body: |
-            The PDF has been generated successfully. You can download it [here](${{ artifact_url }}).
-            Please check the build log for any errors or warnings.
