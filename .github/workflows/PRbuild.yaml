@@ -22,6 +22,6 @@ jobs:
           path: ./main.pdf
       - name: Add comment to PR
         run: |
-          gh pr comment ${{ github.event.number }} --body-file comment.md
+          gh pr comment ${{ github.event.number }} -b ${{artifact_url}} 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
